@@ -1,4 +1,34 @@
-# NgxStarReview
+# ⭐ NgxStarReview
+
+A light package to help you to improve your rating system.
+
+#
+
+## Getting started
+
+`npm i -s techfever/ngx-star-review`
+
+In your component :
+
+`<ngx-star-review></ngx-star-review>`
+
+Example :
+
+```
+<ngx-star-review
+    [starCount]="5"
+    [control]="firstReview"
+    [customIcon]="{
+        icon: faStarOutline,
+        selectedIcon: faStarSolid
+    }"
+    [minDisabled]="true"
+    (rating)="changeFirstReview($event)"
+    mode="default"
+></ngx-star-review>
+```
+
+#
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
 
