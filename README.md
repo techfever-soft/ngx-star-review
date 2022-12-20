@@ -8,7 +8,7 @@ A light package to help you to improve your rating system.
 
 ## Getting started
 
-`npm i -s techfever/ngx-star-review`
+`npm i -s ngx-star-review`
 
 In your component :
 
