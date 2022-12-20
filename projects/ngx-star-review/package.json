@@ -1,6 +1,10 @@
 {
   "name": "ngx-star-review",
   "version": "0.0.1",
+  "author": {
+    "name": "dcmate",
+    "organization": "techfever"
+  },
   "peerDependencies": {
     "@angular/common": "^15.0.0",
     "@angular/core": "^15.0.0"

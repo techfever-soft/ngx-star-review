@@ -4,6 +4,8 @@ A light package to help you to improve your rating system.
 
 #
 
+[DEMO](https://ngx-star-review.web.app/)
+
 ## Getting started
 
 `npm i -s techfever/ngx-star-review`

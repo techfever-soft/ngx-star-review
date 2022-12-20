@@ -6,11 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./documentation.component.scss'],
 })
 export class DocumentationComponent {
-  public getPackageCode = `npm i -s techfever/ngx-star-review`;
+  public getPackageCode = `npm i -s ngx-star-review`;
 
   public moduleCode = `
 import { NgModule } from '@angular/core';
-import { NgxStarReviewModule } from 'techfever/ngx-star-review';
+import { NgxStarReviewModule } from 'ngx-star-review';
 
 @NgModule({
   declarations: [AppModule],
