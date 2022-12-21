@@ -10,7 +10,8 @@
       <fa-icon [icon]="customIcon.selectedIcon" *ngIf="star.selected"></fa-icon>
     </span>
     <span *ngIf="customIcon.text">
-      <mat-icon>{{ customIcon.text }}</mat-icon>
+      <mat-icon *ngIf="!star.selected">{{ customIcon.text }}</mat-icon>
+      <mat-icon *ngIf="star.selected">{{ customIcon.selectedText }}</mat-icon>
     </span>
   </button>
 </span>

@@ -19,13 +19,13 @@ export class NgxStarReviewComponent implements OnInit {
   @Input('starCount') public starCount?: StarReviewConfig['starCount'] = 5;
   @Input('mode') public mode?: StarReviewConfig['mode'] = 'default';
   @Input('theme') public theme?: StarReviewConfig['theme'] = 'primary';
-  @Input('control') public control!: FormControl;
+  @Input('control') public control: FormControl = new FormControl(1);
   @Input('minDisabled') public minDisabled?: boolean = false;
   @Input('customIcon') public customIcon: any = {
     icon: undefined,
     selectedIcon: undefined,
-    text: undefined,
-    selectedText: undefined,
+    text: 'check',
+    selectedText: 'check_circle',
   };
   @Output('rating') public rating: Subject<number> = new Subject();
   public ratingStars: StarReview[] = [];

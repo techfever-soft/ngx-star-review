@@ -27,7 +27,7 @@ import { DocumentationComponent } from './components/documentation/documentation
     MatButtonModule,
     MatCardModule,
     MatSidenavModule,
-    MatTableModule
+    MatTableModule,
   ],
   providers: [
     {
