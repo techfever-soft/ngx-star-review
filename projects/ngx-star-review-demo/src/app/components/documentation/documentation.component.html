@@ -1,6 +1,6 @@
 <mat-card class="mx-auto mt-20">
   <div class="text-center">
-    <h4 class="mat-h4">Getting started</h4>
+    <h3 class="mat-h3">Getting started</h3>
   </div>
 
   <p class="mat-p">Get the package</p>
@@ -15,7 +15,7 @@
 
 <mat-card class="mx-auto mt-20">
   <div class="text-center">
-    <h4 class="mat-h4">Properties</h4>
+    <h3 class="mat-h3">Properties</h3>
   </div>
 
   <table mat-table [dataSource]="properties">
@@ -27,6 +27,15 @@
     <ng-container matColumnDef="type">
       <th mat-header-cell *matHeaderCellDef>Type</th>
       <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="accepted">
+      <th mat-header-cell *matHeaderCellDef>Accepted value</th>
+      <td mat-cell *matCellDef="let element">
+        <ul *ngFor="let value of element.accepted">
+          <li>{{ value }}</li>
+        </ul>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="default">

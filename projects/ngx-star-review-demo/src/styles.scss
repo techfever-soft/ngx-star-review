@@ -11,33 +11,33 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$survey-me-primary: mat.define-palette(mat.$amber-palette);
-$survey-me-accent: mat.define-palette(mat.$indigo-palette);
+$ngx-star-review-primary: mat.define-palette(mat.$amber-palette);
+$ngx-star-review-accent: mat.define-palette(mat.$indigo-palette);
 
 // The warn palette is optional (defaults to red).
-$survey-me-warn: mat.define-palette(mat.$red-palette);
+$ngx-star-review-warn: mat.define-palette(mat.$red-palette);
 
-$survey-me-typography: mat.define-typography-config(
+$ngx-star-review-typography: mat.define-typography-config(
   $font-family: "Montserrat",
 );
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$survey-me-theme: mat.define-dark-theme(
+$ngx-star-review-theme: mat.define-dark-theme(
   (
     color: (
-      primary: $survey-me-primary,
-      accent: $survey-me-accent,
-      warn: $survey-me-warn,
+      primary: $ngx-star-review-primary,
+      accent: $ngx-star-review-accent,
+      warn: $ngx-star-review-warn,
     ),
-    typography: $survey-me-typography,
+    typography: $ngx-star-review-typography,
   )
 );
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($survey-me-theme);
+@include mat.all-component-themes($ngx-star-review-theme);
 
 * {
   clear: both;
@@ -59,12 +59,26 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+p.mat-p {
+  @include mat.typography-level($ngx-star-review-typography, "body-2");
+}
+
+p.mat-caption {
+  @include mat.typography-level($ngx-star-review-typography, "caption");
+}
+
 ngx-star-review {
   display: flex;
 }
 
-mat-card {
-  width: fit-content;
+.mat-mdc-card {
+  width: auto;
+  border-radius: 15px !important;
+}
+
+.mat-mdc-button,
+.mat-mdc-raised-button {
+  border-radius: 15px !important;
 }
 
 .mat-mdc-table {
@@ -117,6 +131,33 @@ pre {
   margin: 0;
 }
 
+.mat-table {
+  overflow-x: scroll;
+}
+
+.mat-cell,
+.mat-header-cell {
+  word-wrap: initial;
+  display: table-cell;
+  padding: 0px 10px;
+  line-break: unset;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.mat-row,
+.mat-header-row {
+  display: table-row;
+}
+
+img.brand-logo {
+  width: 100px;
+  border-radius: 50%;
+  user-select: none;
+  pointer-events: none;
+}
+
 .footer {
   padding: 25px 0;
   h4 {
@@ -124,7 +165,7 @@ pre {
     a {
       text-decoration: none;
       font-weight: bold;
-      color: mat.get-color-from-palette($survey-me-primary);
+      color: mat.get-color-from-palette($ngx-star-review-primary);
     }
   }
 }

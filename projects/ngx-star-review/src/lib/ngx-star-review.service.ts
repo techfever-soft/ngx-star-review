@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {
+  MatButtonToggle,
   MatButtonToggleGroup,
 } from '@angular/material/button-toggle';
 import { StarReview } from './ngx-star-review.interface';
@@ -16,12 +17,14 @@ export class NgxStarReviewService {
     stars: StarReview[],
     control: FormControl
   ): void {
-    const foundStar = stars.findIndex((star) => star.value === index);
-    let selectedStarsArray = [];
+    const foundStarIndex: number = stars.findIndex(
+      (star) => star.value === index
+    );
+    let selectedStarsArray: StarReview[] = [];
 
-    stars.forEach((star, index) => {
+    stars.forEach((star: StarReview, index: number) => {
       star.selected = false;
-      if (index <= foundStar) {
+      if (index <= foundStarIndex) {
         star.selected = true;
         selectedStarsArray.push(star);
       }
@@ -34,14 +37,14 @@ export class NgxStarReviewService {
     index: number,
     control: FormControl,
     toggleGroup: MatButtonToggleGroup
-  ) {
-      toggleGroup._buttonToggles.forEach(toggleButton => {
-        if (toggleButton.value <= index) {
-          toggleButton.checked = true;
-        } else {
-          toggleButton.checked = false;
-        }
-      })
+  ): void {
+    toggleGroup._buttonToggles.forEach((toggleButton: MatButtonToggle) => {
+      if (toggleButton.value <= index) {
+        toggleButton.checked = true;
+      } else {
+        toggleButton.checked = false;
+      }
+    });
 
     control.setValue(index);
   }

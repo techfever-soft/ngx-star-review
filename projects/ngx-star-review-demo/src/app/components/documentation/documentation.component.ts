@@ -27,7 +27,13 @@ export class AppModule {
 
   public usageCode = `<ngx-star-review></ngx-star-review>`;
 
-  public displayedColumns = ['name', 'type', 'default', 'description'];
+  public displayedColumns = [
+    'name',
+    'type',
+    'accepted',
+    'default',
+    'description',
+  ];
 
   public properties = [
     {
@@ -41,6 +47,7 @@ export class AppModule {
       type: 'string',
       default: 'default',
       description: 'The mode of star rating used',
+      accepted: ['default', 'material', 'material-toggle'],
     },
     {
       name: 'control',
@@ -53,12 +60,25 @@ export class AppModule {
       type: 'any',
       default: undefined,
       description: 'The custom stars you want to use',
+      accepted: [
+        'icon?: any',
+        'selectedIcon?: any',
+        'text?: string',
+        'selectedText?: string',
+      ],
     },
     {
       name: 'minDisabled',
       type: 'boolean',
       default: false,
       description: 'If the first star is always selected and disabled',
+    },
+    {
+      name: 'theme',
+      type: 'string',
+      default: 'primary',
+      description: 'Angular Material theme (primary or accent)',
+      accepted: ['primary', 'accent']
     },
     {
       name: 'rating',

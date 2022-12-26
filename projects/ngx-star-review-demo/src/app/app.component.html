@@ -3,21 +3,43 @@
 
   <div class="container">
     <div class="text-center">
+      <div class="mt-20">
+        <img
+        src="./assets/techfever-logo.svg"
+        alt="TechFever logo"
+        class="brand-logo"
+      />
+      </div>
       <h2 class="mat-h2">⭐ ngx-star-review</h2>
       <p class="mat-caption">
         A light package to help you to improve your rating system
       </p>
 
-      <a mat-button color="accent" disabled>
-        <mat-icon>link</mat-icon> Support our work (soon)
-      </a>
+      <div>
+        <a mat-button href="//techfever.dev" target="_blank">
+          <mat-icon>link</mat-icon> Our latest projects
+        </a>
+      </div>
+      <div>
+        <a mat-button color="accent" disabled>
+          <mat-icon>link</mat-icon> Support us (soon)
+        </a>
+      </div>
     </div>
 
     <mat-tab-group dynamicHeight class="mt-20">
-      <mat-tab label="Examples">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>category</mat-icon>&nbsp;Example
+        </ng-template>
+
         <app-examples></app-examples>
       </mat-tab>
-      <mat-tab label="Documentation">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>description</mat-icon>&nbsp;Documentation
+        </ng-template>
+
         <app-documentation></app-documentation>
       </mat-tab>
     </mat-tab-group>

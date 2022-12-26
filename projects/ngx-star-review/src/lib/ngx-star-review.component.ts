@@ -21,7 +21,7 @@ export class NgxStarReviewComponent implements OnInit {
   @Input('theme') public theme?: StarReviewConfig['theme'] = 'primary';
   @Input('control') public control: FormControl = new FormControl(1);
   @Input('minDisabled') public minDisabled?: boolean = false;
-  @Input('customIcon') public customIcon: any = {
+  @Input('customIcon') public customIcon: StarReviewConfig['customIcon'] = {
     icon: undefined,
     selectedIcon: undefined,
     text: 'check',
@@ -51,25 +51,27 @@ export class NgxStarReviewComponent implements OnInit {
   }
 
   private generateRatingStars(starCount: number): StarReview[] {
-    let stars: any[] = [];
+    let stars: StarReview[] = [];
 
     for (let i = 1; i <= starCount; i++) {
-      stars.push({
+      const newStar: StarReview = {
         value: i,
         selected: i == 1 ? true : false,
-      });
+      };
+      stars.push(newStar);
     }
 
     return stars;
   }
 
   public onStarClick(value: number): void {
-    const control = this.ratingForm.get('rating') as FormControl;
+    const control: FormControl = this.ratingForm.get('rating') as FormControl;
     this.reviewService.onStarClick(
       value,
       this.ratingStars,
       this.control ? this.control : control
     );
+
     this.rating.next(value);
   }
 
@@ -77,13 +79,13 @@ export class NgxStarReviewComponent implements OnInit {
     value: number,
     toggleGroup: MatButtonToggleGroup
   ): void {
-    const control = this.ratingForm.get('rating') as FormControl;
+    const control: FormControl = this.ratingForm.get('rating') as FormControl;
     this.reviewService.onStarToggleClick(
       value,
       this.control ? this.control : control,
       toggleGroup
     );
+
     this.rating.next(value);
   }
-
 }
