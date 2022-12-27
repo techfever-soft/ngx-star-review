@@ -15,40 +15,27 @@
 
 <mat-card class="mx-auto mt-20">
   <div class="text-center">
-    <h3 class="mat-h3">Properties</h3>
+    <h3 class="mat-h3">Usage</h3>
   </div>
 
-  <table mat-table [dataSource]="properties">
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Property</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-    </ng-container>
+  <h4 class="mat-h4">Interfaces</h4>
+  <div *ngFor="let interface of interfaces">
+    <h5 class="mat-h5">{{ interface.name }}</h5>
+    <div *ngFor="let property of interface.properties">
+      <pre><code>{{ property.name }}: <span class="text-muted">{{ property.type }}</span></code></pre>
+    </div>
+  </div>
 
-    <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef>Type</th>
-      <td mat-cell *matCellDef="let element">{{ element.type }}</td>
-    </ng-container>
+  <div class="mt-20 mb-20">
+  <mat-divider></mat-divider>
+  </div>
 
-    <ng-container matColumnDef="accepted">
-      <th mat-header-cell *matHeaderCellDef>Accepted value</th>
-      <td mat-cell *matCellDef="let element">
-        <ul *ngFor="let value of element.accepted">
-          <li>{{ value }}</li>
-        </ul>
-      </td>
-    </ng-container>
+  <h4 class="mat-h4">Component properties</h4>
+  <div *ngFor="let prop of properties">
+    <pre><code>{{ prop.name }}: {{ prop.type }}</code></pre>
+    <p class="mat-caption text-muted">
+      {{ prop.description }}
+    </p>
+  </div> 
 
-    <ng-container matColumnDef="default">
-      <th mat-header-cell *matHeaderCellDef>Default</th>
-      <td mat-cell *matCellDef="let element">{{ element.default }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef>description</th>
-      <td mat-cell *matCellDef="let element">{{ element.description }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
 </mat-card>

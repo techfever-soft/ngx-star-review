@@ -12,7 +12,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $ngx-star-review-primary: mat.define-palette(mat.$amber-palette);
-$ngx-star-review-accent: mat.define-palette(mat.$indigo-palette);
+$ngx-star-review-accent: mat.define-palette(mat.$cyan-palette);
 
 // The warn palette is optional (defaults to red).
 $ngx-star-review-warn: mat.define-palette(mat.$red-palette);
@@ -116,19 +116,21 @@ ngx-star-review {
   text-align: center;
 }
 
+.text-muted {
+  opacity: 0.5;
+}
+
 .container {
   position: relative;
-  padding: 0 5%;
 }
 
-mat-card {
+.mdc-card {
+  max-height: 500px;
   width: fit-content;
-  margin: 0 auto;
+  max-width: calc(100% - 5em);
+  margin: 25px auto;
   padding: 25px;
-}
-
-pre {
-  margin: 0;
+  overflow: auto;
 }
 
 .mat-table {

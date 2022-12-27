@@ -7,7 +7,11 @@ import {
 } from '@angular/forms';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { Subject } from 'rxjs';
-import { StarReview, StarReviewConfig } from './ngx-star-review.interface';
+import {
+  StarReview,
+  StarReviewConfig,
+  StarReviewIcon,
+} from './ngx-star-review.interface';
 import { NgxStarReviewService } from './ngx-star-review.service';
 
 @Component({
@@ -21,7 +25,7 @@ export class NgxStarReviewComponent implements OnInit {
   @Input('theme') public theme?: StarReviewConfig['theme'] = 'primary';
   @Input('control') public control: FormControl = new FormControl(1);
   @Input('minDisabled') public minDisabled?: boolean = false;
-  @Input('customIcon') public customIcon: StarReviewConfig['customIcon'] = {
+  @Input('customIcon') public customIcon: StarReviewIcon = {
     icon: undefined,
     selectedIcon: undefined,
     text: 'check',
@@ -45,25 +49,17 @@ export class NgxStarReviewComponent implements OnInit {
       this.mode = 'default';
     }
 
-    this.ratingStars = this.generateRatingStars(
+    this.ratingStars = this.reviewService.generateRatingStars(
       this.starCount ? this.starCount : 5
     );
   }
 
-  private generateRatingStars(starCount: number): StarReview[] {
-    let stars: StarReview[] = [];
-
-    for (let i = 1; i <= starCount; i++) {
-      const newStar: StarReview = {
-        value: i,
-        selected: i == 1 ? true : false,
-      };
-      stars.push(newStar);
-    }
-
-    return stars;
-  }
-
+  /**
+   * Send the clicked star to the review service to display the selected stars
+   *
+   * @public
+   * @param number value
+   */
   public onStarClick(value: number): void {
     const control: FormControl = this.ratingForm.get('rating') as FormControl;
     this.reviewService.onStarClick(
@@ -75,6 +71,12 @@ export class NgxStarReviewComponent implements OnInit {
     this.rating.next(value);
   }
 
+  /**
+   * Send the clicked star to the review service to display the selected stars
+   *
+   * @public
+   * @param number value
+   */
   public onStarToggleClick(
     value: number,
     toggleGroup: MatButtonToggleGroup

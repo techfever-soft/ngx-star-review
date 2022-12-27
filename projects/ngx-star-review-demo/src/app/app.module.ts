@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
+import { MatDividerModule } from '@angular/material/divider';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxStarReviewModule } from 'ngx-star-review';
 
@@ -28,6 +29,7 @@ import { DocumentationComponent } from './components/documentation/documentation
     MatCardModule,
     MatSidenavModule,
     MatTableModule,
+    MatDividerModule,
   ],
   providers: [
     {

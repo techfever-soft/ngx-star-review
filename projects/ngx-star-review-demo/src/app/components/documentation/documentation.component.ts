@@ -27,15 +27,7 @@ export class AppModule {
 
   public usageCode = `<ngx-star-review></ngx-star-review>`;
 
-  public displayedColumns = [
-    'name',
-    'type',
-    'accepted',
-    'default',
-    'description',
-  ];
-
-  public properties = [
+  private rawProperties = [
     {
       name: 'starCount',
       type: 'number',
@@ -78,15 +70,92 @@ export class AppModule {
       type: 'string',
       default: 'primary',
       description: 'Angular Material theme (primary or accent)',
-      accepted: ['primary', 'accent']
+      accepted: ['primary', 'accent'],
     },
     {
       name: 'rating',
-      type: 'EventEmitter',
+      type: 'Subject<number>',
       default: undefined,
       description: 'The event reflected on star review changed',
     },
   ];
 
+  public rawInterfaces = [
+    {
+      name: 'StarReviewConfig',
+      properties: [
+        {
+          name: 'mode',
+          type: "string | 'default' | 'material' | 'material-toggle'",
+        },
+        {
+          name: 'theme',
+          type: "string | 'primary' | 'accent'",
+        },
+        {
+          name: 'starCount',
+          type: 'number',
+        },
+        {
+          name: 'customIcon',
+          type: 'StarReviewIcon',
+        },
+      ],
+    },
+    {
+      name: 'StarReview',
+      properties: [
+        {
+          name: 'value',
+          type: 'number',
+        },
+        {
+          name: 'selected',
+          type: 'boolean',
+        },
+      ],
+    },
+    {
+      name: 'StarReviewIcon',
+      properties: [
+        {
+          name: 'text',
+          type: 'string',
+        },
+        {
+          name: 'selectedText',
+          type: 'string',
+        },
+        {
+          name: 'icon',
+          type: 'any | IconDefinition | IconProp',
+        },
+        {
+          name: 'selectedIcon',
+          type: 'any | IconDefinition | IconProp',
+        },
+      ],
+    },
+  ];
+
   constructor() {}
+
+  public get properties(): any[] {
+    return this.rawProperties.sort((one, two) =>
+      one.name > two.name ? 1 : -1
+    );
+  }
+
+  public get interfaces(): any[] {
+    let newInterfaces: any[] = [];
+
+    this.rawInterfaces.forEach((i) => {
+      i.properties = i.properties.sort((one, two) =>
+        one.name > two.name ? 1 : -1
+      );
+      newInterfaces.push(i);
+    });
+
+    return newInterfaces.sort((one, two) => (one.name > two.name ? 1 : -1));
+  }
 }

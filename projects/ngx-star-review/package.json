@@ -1,6 +1,6 @@
 {
   "name": "ngx-star-review",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": {
     "name": "dcmate",
     "organization": "techfever"
@@ -17,5 +17,14 @@
   },
   "dependencies": {
     "tslib": "^2.3.0"
-  }
+  },
+  "keywords": [
+    "angular",
+    "ngx",
+    "star-rating",
+    "star",
+    "review",
+    "rating",
+    "rating-service"
+  ]
 }

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { faStar as outlineStar } from '@fortawesome/free-regular-svg-icons';
+import {
+  faStar as outlineStar,
+  IconDefinition,
+} from '@fortawesome/free-regular-svg-icons';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -10,8 +13,8 @@ import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 })
 export class ExamplesComponent {
   public reviewForm: FormGroup;
-  public faStarOutline = outlineStar;
-  public faStarSolid = solidStar;
+  public faStarOutline: IconDefinition = outlineStar;
+  public faStarSolid: IconDefinition = solidStar;
 
   public defaultReviewCodeShowed: boolean = false;
   public iconButtonsReviewCodeShowed: boolean = false;
@@ -116,15 +119,15 @@ export class AppComponent {
     });
   }
 
-  public changeFirstReview(starCount: number) {
+  public changeFirstReview(starCount: number): void {
     this.firstReview.patchValue(starCount);
   }
 
-  public changeSecondReview(starCount: number) {
+  public changeSecondReview(starCount: number): void {
     this.secondReview.patchValue(starCount);
   }
 
-  public changeThirdReview(starCount: number) {
+  public changeThirdReview(starCount: number): void {
     this.thirdReview.patchValue(starCount);
   }
 
