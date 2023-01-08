@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   Validators,
@@ -19,7 +19,7 @@ import { NgxStarReviewService } from './ngx-star-review.service';
   templateUrl: './ngx-star-review.component.html',
   styles: [],
 })
-export class NgxStarReviewComponent implements OnInit {
+export class NgxStarReviewComponent implements OnInit, OnChanges {
   @Input('starCount') public starCount?: StarReviewConfig['starCount'] = 5;
   @Input('mode') public mode?: StarReviewConfig['mode'] = 'default';
   @Input('theme') public theme?: StarReviewConfig['theme'] = 'primary';
@@ -49,6 +49,19 @@ export class NgxStarReviewComponent implements OnInit {
       this.mode = 'default';
     }
 
+    this.updateStarsCount();
+  }
+
+  ngOnChanges(): void {
+    this.updateStarsCount();
+  }
+
+  /**
+   * Update the count of stars at each change
+   * 
+   * @private
+   */
+  private updateStarsCount() {
     this.ratingStars = this.reviewService.generateRatingStars(
       this.starCount ? this.starCount : 5
     );

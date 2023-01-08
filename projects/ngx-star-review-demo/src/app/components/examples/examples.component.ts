@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Clipboard } from '@angular/cdk/clipboard';
 import {
   faStar as outlineStar,
   IconDefinition,
 } from '@fortawesome/free-regular-svg-icons';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-examples',
@@ -111,7 +113,11 @@ export class AppComponent {
 ></ngx-star-review>
 `;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private clipboard: Clipboard,
+    private snackBar: MatSnackBar
+  ) {
     this.reviewForm = this.fb.group({
       firstReview: [1],
       secondReview: [1],
@@ -141,5 +147,12 @@ export class AppComponent {
 
   public get thirdReview(): FormControl {
     return this.reviewForm.get('thirdReview') as FormControl;
+  }
+
+  public copyCodeSnippet(content: string) {
+    this.clipboard.copy(content);
+    this.snackBar.open('Code copied to your clipboard', 'OK', {
+      duration: 2000,
+    });
   }
 }

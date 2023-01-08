@@ -1,6 +1,6 @@
 {
   "name": "ngx-star-review",
-  "version": "0.0.1",
+  "version": "15.0.7",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

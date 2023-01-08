@@ -1,200 +1,221 @@
 <mat-card class="mx-auto mt-20">
-    <div class="text-center">
-      <h3 class="mat-h3">Default mode</h3>
-    </div>
+  <div class="text-center">
+    <h3 class="mat-h3">Default mode</h3>
+  </div>
 
-    <div class="mt-20 mb-20 mx-auto">
-      <ngx-star-review
-        [starCount]="5"
-        mode="default"
-        [control]="firstReview"
-        [customIcon]="{
-          icon: faStarOutline,
-          selectedIcon: faStarSolid
-        }"
-        [minDisabled]="true"
-        (rating)="changeFirstReview($event)"
-        class="mx-auto"
-      ></ngx-star-review>
-    </div>
+  <div class="mt-20 mb-20 mx-auto">
+    <ngx-star-review
+      [starCount]="dynamicStarCount.valueAsNumber"
+      mode="default"
+      [control]="firstReview"
+      [customIcon]="{
+        icon: faStarOutline,
+        selectedIcon: faStarSolid
+      }"
+      [minDisabled]="true"
+      (rating)="changeFirstReview($event)"
+      class="mx-auto"
+    ></ngx-star-review>
 
-    <div class="mt-10 mb-10 text-center">
-      <button
-        mat-button
-        (click)="defaultReviewCodeShowed = true"
-        *ngIf="!defaultReviewCodeShowed"
-      >
-        <mat-icon>code</mat-icon> Show code
-      </button>
-      <button
-        mat-button
-        (click)="defaultReviewCodeShowed = false"
-        *ngIf="defaultReviewCodeShowed"
-        color="warn"
-      >
-        <mat-icon>close</mat-icon> Hide code
-      </button>
-    </div>
+    <br />
 
-    <div *ngIf="defaultReviewCodeShowed">
-      <mat-tab-group dynamicHeight>
-        <mat-tab>
-          <ng-template mat-tab-label> HTML </ng-template>
+    <mat-form-field style="width: 100%">
+      <mat-label>Star count</mat-label>
+      <input matInput type="number" #dynamicStarCount value="5" />
+    </mat-form-field>
+  </div>
 
-          <pre><code [highlight]="firstReviewHTMLCode" [languages]="['html']"></code></pre>
+  <div class="mt-10 mb-10 text-center">
+    <button
+      mat-button
+      (click)="defaultReviewCodeShowed = true"
+      *ngIf="!defaultReviewCodeShowed"
+    >
+      <mat-icon>code</mat-icon> Show code
+    </button>
+    <button
+      mat-button
+      (click)="defaultReviewCodeShowed = false"
+      *ngIf="defaultReviewCodeShowed"
+      color="warn"
+    >
+      <mat-icon>close</mat-icon> Hide code
+    </button>
+  </div>
 
-          <div class="text-center mt-10 mb-10">
-            <button mat-button color="primary">
-              <mat-icon>content_copy</mat-icon> Copy HTML snippet
-            </button>
-          </div>
-        </mat-tab>
-        <mat-tab>
-          <ng-template mat-tab-label> TS </ng-template>
+  <div *ngIf="defaultReviewCodeShowed">
+    <mat-tab-group dynamicHeight>
+      <mat-tab>
+        <ng-template mat-tab-label> HTML </ng-template>
 
-          <pre><code [highlight]="firstReviewTSCode" [languages]="['typescript']"></code></pre>
+        <pre><code [highlight]="firstReviewHTMLCode" [languages]="['html']"></code></pre>
 
-          <div class="text-center mt-10 mb-10">
-            <button mat-button color="primary">
-              <mat-icon>content_copy</mat-icon> Copy TS snippet
-            </button>
-          </div>
-        </mat-tab>
-      </mat-tab-group>
-    </div>
-  </mat-card>
+        <div class="text-center mt-10 mb-10">
+          <button mat-button color="primary" (click)="copyCodeSnippet(firstReviewHTMLCode)">
+            <mat-icon>content_copy</mat-icon> Copy HTML snippet
+          </button>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label> TS </ng-template>
 
-  <br />
+        <pre><code [highlight]="firstReviewTSCode" [languages]="['typescript']"></code></pre>
 
-  <mat-card>
-    <div class="text-center">
-      <h3 class="mat-h3">Material icon buttons</h3>
-    </div>
+        <div class="text-center mt-10 mb-10">
+          <button mat-button color="primary" (click)="copyCodeSnippet(firstReviewHTMLCode)">
+            <mat-icon>content_copy</mat-icon> Copy TS snippet
+          </button>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</mat-card>
 
-    <div class="mt-20 mb-20 mx-auto">
-      <ngx-star-review
-        [starCount]="5"
-        mode="material"
-        [control]="secondReview"
-        (rating)="changeSecondReview($event)"
-        [minDisabled]="true"
-        [customIcon]="{
-          text: 'check',
-          selectedText: 'check_circle'
-        }"
-      ></ngx-star-review>
-    </div>
+<br />
 
-    <div class="mt-10 mb-10 text-center">
-      <button
-        mat-button
-        (click)="iconButtonsReviewCodeShowed = true"
-        *ngIf="!iconButtonsReviewCodeShowed"
-      >
-        <mat-icon>code</mat-icon> Show code
-      </button>
-      <button
-        mat-button
-        (click)="iconButtonsReviewCodeShowed = false"
-        *ngIf="iconButtonsReviewCodeShowed"
-        color="warn"
-      >
-        <mat-icon>close</mat-icon> Hide code
-      </button>
-    </div>
+<mat-card>
+  <div class="text-center">
+    <h3 class="mat-h3">Material icon buttons</h3>
+  </div>
 
-    <div *ngIf="iconButtonsReviewCodeShowed">
-      <mat-tab-group dynamicHeight>
-        <mat-tab>
-          <ng-template mat-tab-label> HTML </ng-template>
+  <div class="mt-20 mb-20 mx-auto">
+    <ngx-star-review
+      [starCount]="dynamicStarCountMat.valueAsNumber"
+      mode="material"
+      [control]="secondReview"
+      (rating)="changeSecondReview($event)"
+      [minDisabled]="true"
+      [customIcon]="{
+        text: 'check',
+        selectedText: 'check_circle'
+      }"
+    ></ngx-star-review>
 
-          <pre><code [highlight]="secondReviewHTMLCode" [languages]="['html']"></code></pre>
+    <br />
 
-          <div class="text-center mt-10 mb-10">
-            <button mat-button color="primary">
-              <mat-icon>content_copy</mat-icon> Copy HTML snippet
-            </button>
-          </div>
-        </mat-tab>
-        <mat-tab>
-          <ng-template mat-tab-label> TS </ng-template>
+    <mat-form-field style="width: 100%">
+      <mat-label>Star count</mat-label>
+      <input matInput type="number" #dynamicStarCountMat value="5" />
+    </mat-form-field>
+  </div>
 
-          <pre><code [highlight]="secondReviewTSCode" [languages]="['typescript']"></code></pre>
+  <div class="mt-10 mb-10 text-center">
+    <button
+      mat-button
+      (click)="iconButtonsReviewCodeShowed = true"
+      *ngIf="!iconButtonsReviewCodeShowed"
+    >
+      <mat-icon>code</mat-icon> Show code
+    </button>
+    <button
+      mat-button
+      (click)="iconButtonsReviewCodeShowed = false"
+      *ngIf="iconButtonsReviewCodeShowed"
+      color="warn"
+    >
+      <mat-icon>close</mat-icon> Hide code
+    </button>
+  </div>
 
-          <div class="text-center mt-10 mb-10">
-            <button mat-button color="primary">
-              <mat-icon>content_copy</mat-icon> Copy TS snippet
-            </button>
-          </div>
-        </mat-tab>
-      </mat-tab-group>
-    </div>
-  </mat-card>
+  <div *ngIf="iconButtonsReviewCodeShowed">
+    <mat-tab-group dynamicHeight>
+      <mat-tab>
+        <ng-template mat-tab-label> HTML </ng-template>
 
-  <br />
+        <pre><code [highlight]="secondReviewHTMLCode" [languages]="['html']"></code></pre>
 
-  <mat-card>
-    <div class="text-center">
-      <h3 class="mat-h3">Material toggle buttons</h3>
-    </div>
+        <div class="text-center mt-10 mb-10">
+          <button mat-button color="primary" (click)="copyCodeSnippet(firstReviewHTMLCode)">
+            <mat-icon>content_copy</mat-icon> Copy HTML snippet
+          </button>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label> TS </ng-template>
 
-    <div class="mt-20 mb-20 mx-auto">
-      <ngx-star-review
-        [starCount]="5"
-        [control]="thirdReview"
-        [minDisabled]="false"
-        [customIcon]="{
-          text: 'favorite',
-          selectedText: 'favorite'
-        }"
-        (rating)="changeThirdReview($event)"
-        theme="accent"
-        mode="material-toggle"
-      ></ngx-star-review>
-    </div>
+        <pre><code [highlight]="secondReviewTSCode" [languages]="['typescript']"></code></pre>
 
-    <div class="mt-10 mb-10 text-center">
-      <button
-        mat-button
-        (click)="buttonsToggleReviewCodeShowed = true"
-        *ngIf="!buttonsToggleReviewCodeShowed"
-      >
-        <mat-icon>code</mat-icon> Show code
-      </button>
-      <button
-        mat-button
-        (click)="buttonsToggleReviewCodeShowed = false"
-        *ngIf="buttonsToggleReviewCodeShowed"
-        color="warn"
-      >
-        <mat-icon>close</mat-icon> Hide code
-      </button>
-    </div>
+        <div class="text-center mt-10 mb-10">
+          <button mat-button color="primary" (click)="copyCodeSnippet(firstReviewHTMLCode)">
+            <mat-icon>content_copy</mat-icon> Copy TS snippet
+          </button>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</mat-card>
 
-    <div *ngIf="buttonsToggleReviewCodeShowed">
-      <mat-tab-group dynamicHeight>
-        <mat-tab>
-          <ng-template mat-tab-label> HTML </ng-template>
+<br />
 
-          <pre><code [highlight]="thirdReviewHTMLCode" [languages]="['html']"></code></pre>
+<mat-card>
+  <div class="text-center">
+    <h3 class="mat-h3">Material toggle buttons</h3>
+  </div>
 
-          <div class="text-center mt-10 mb-10">
-            <button mat-button color="primary">
-              <mat-icon>content_copy</mat-icon> Copy HTML snippet
-            </button>
-          </div>
-        </mat-tab>
-        <mat-tab>
-          <ng-template mat-tab-label> TS </ng-template>
+  <div class="mt-20 mb-20 mx-auto">
+    <ngx-star-review
+      [starCount]="dynamicStarCountMatToggle.valueAsNumber"
+      [control]="thirdReview"
+      [minDisabled]="false"
+      [customIcon]="{
+        text: 'favorite',
+        selectedText: 'favorite'
+      }"
+      (rating)="changeThirdReview($event)"
+      theme="accent"
+      mode="material-toggle"
+    ></ngx-star-review>
 
-          <pre><code [highlight]="secondReviewTSCode" [languages]="['typescript']"></code></pre>
+    <br />
 
-          <div class="text-center mt-10 mb-10">
-            <button mat-button color="primary">
-              <mat-icon>content_copy</mat-icon> Copy TS snippet
-            </button>
-          </div>
-        </mat-tab>
-      </mat-tab-group>
-    </div>
-  </mat-card>
+    <mat-form-field style="width: 100%">
+      <mat-label>Star count</mat-label>
+      <input matInput type="number" #dynamicStarCountMatToggle value="5" />
+    </mat-form-field>
+  </div>
+
+  <div class="mt-10 mb-10 text-center">
+    <button
+      mat-button
+      (click)="buttonsToggleReviewCodeShowed = true"
+      *ngIf="!buttonsToggleReviewCodeShowed"
+    >
+      <mat-icon>code</mat-icon> Show code
+    </button>
+    <button
+      mat-button
+      (click)="buttonsToggleReviewCodeShowed = false"
+      *ngIf="buttonsToggleReviewCodeShowed"
+      color="warn"
+    >
+      <mat-icon>close</mat-icon> Hide code
+    </button>
+  </div>
+
+  <div *ngIf="buttonsToggleReviewCodeShowed">
+    <mat-tab-group dynamicHeight>
+      <mat-tab>
+        <ng-template mat-tab-label> HTML </ng-template>
+
+        <pre><code [highlight]="thirdReviewHTMLCode" [languages]="['html']"></code></pre>
+
+        <div class="text-center mt-10 mb-10">
+          <button mat-button color="primary" (click)="copyCodeSnippet(firstReviewHTMLCode)">
+            <mat-icon>content_copy</mat-icon> Copy HTML snippet
+          </button>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label> TS </ng-template>
+
+        <pre><code [highlight]="secondReviewTSCode" [languages]="['typescript']"></code></pre>
+
+        <div class="text-center mt-10 mb-10">
+          <button mat-button color="primary" (click)="copyCodeSnippet(firstReviewHTMLCode)">
+            <mat-icon>content_copy</mat-icon> Copy TS snippet
+          </button>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</mat-card>

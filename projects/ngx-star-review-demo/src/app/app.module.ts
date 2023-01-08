@@ -7,7 +7,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+
 import { NgxStarReviewModule } from 'ngx-star-review';
 
 import { AppComponent } from './app.component';
@@ -23,6 +28,7 @@ import { DocumentationComponent } from './components/documentation/documentation
     NgxStarReviewModule,
     HighlightModule,
 
+    ClipboardModule,
     MatTabsModule,
     MatIconModule,
     MatButtonModule,
@@ -30,6 +36,9 @@ import { DocumentationComponent } from './components/documentation/documentation
     MatSidenavModule,
     MatTableModule,
     MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSnackBarModule,
   ],
   providers: [
     {
