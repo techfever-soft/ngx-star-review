@@ -1,10 +1,27 @@
-# ⭐ NgxStarReview
+# ⭐ ngx-star-review
 
 A light package to help you to improve your rating system.
 
+Built with Angular Ivy 15.0.0 for Angular 14-15
+
 #
 
-[DEMO](https://ngx-star-review.web.app/)
+![](https://img.shields.io/github/checks-status/techfever-soft/ngx-star-review/main)
+
+![](https://img.shields.io/npm/l/ngx-star-review)
+
+![](https://img.shields.io/npm/v/ngx-star-review)
+
+![](https://img.shields.io/npm/dt/ngx-star-review)
+
+#
+
+## Demo and documentation
+
+@see
+[DEMO & DOCUMENTATION](https://ngx-star-review.web.app/)
+
+#
 
 ## Getting started
 
