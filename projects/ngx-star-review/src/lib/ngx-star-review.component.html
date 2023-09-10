@@ -1,0 +1,82 @@
+<span *ngIf="mode === 'default'">
+  <button
+    *ngFor="let star of ratingStars"
+    (click)="onStarClick(star.value)"
+    type="button"
+    [disabled]="minDisabled && star.value == 1"
+  >
+    <span *ngIf="customIcon.icon">
+      <fa-icon [icon]="customIcon.icon" *ngIf="!star.selected"></fa-icon>
+      <fa-icon [icon]="customIcon.selectedIcon" *ngIf="star.selected"></fa-icon>
+    </span>
+    <span *ngIf="customIcon.text">
+      <mat-icon *ngIf="!star.selected">{{ customIcon.text }}</mat-icon>
+      <mat-icon *ngIf="star.selected">{{ customIcon.selectedText }}</mat-icon>
+    </span>
+  </button>
+</span>
+
+<span *ngIf="mode === 'material'">
+  <button
+    mat-icon-button
+    *ngFor="let star of ratingStars"
+    [color]="star.selected ? theme : 'default'"
+    (click)="onStarClick(star.value)"
+    [disabled]="minDisabled && star.value == 1"
+    type="button"
+  >
+    <span *ngIf="customIcon.icon">
+      <fa-icon [icon]="customIcon.icon" *ngIf="!star.selected"></fa-icon>
+      <fa-icon [icon]="customIcon.selectedIcon" *ngIf="star.selected"></fa-icon>
+    </span>
+    <span *ngIf="customIcon.text">
+      <mat-icon *ngIf="!star.selected">{{ customIcon.text }}</mat-icon>
+      <mat-icon *ngIf="star.selected">{{ customIcon.selectedText }}</mat-icon>
+    </span>
+  </button>
+</span>
+
+<span *ngIf="mode === 'material-toggle'">
+  <mat-button-toggle-group
+    multiple
+    #toggleGroup="matButtonToggleGroup"
+    *ngIf="customIcon.icon"
+  >
+    <mat-button-toggle
+      #starToggle
+      [checked]="star.selected"
+      (click)="onStarToggleClick(star.value, toggleGroup)"
+      [value]="star.value"
+      *ngFor="let star of ratingStars"
+      [disabled]="minDisabled && star.value == 1"
+    >
+      <fa-icon [icon]="customIcon.icon" *ngIf="!star.selected"></fa-icon>
+      <fa-icon [icon]="customIcon.selectedIcon" *ngIf="star.selected"></fa-icon>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+  <mat-button-toggle-group
+    multiple
+    #toggleGroup="matButtonToggleGroup"
+    *ngIf="customIcon.text"
+  >
+    <mat-button-toggle
+      #starToggle
+      [checked]="star.selected"
+      (click)="onStarToggleClick(star.value, toggleGroup)"
+      [value]="star.value"
+      *ngFor="let star of ratingStars"
+      [disabled]="minDisabled && star.value == 1"
+    >
+      <mat-icon
+        *ngIf="!star.selected"
+        [color]="starToggle.checked ? theme : 'default'"
+        >{{ customIcon.text }}</mat-icon
+      >
+      <mat-icon
+        *ngIf="star.selected"
+        [color]="starToggle.checked ? theme : 'default'"
+        >{{ customIcon.selectedText }}</mat-icon
+      >
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</span>

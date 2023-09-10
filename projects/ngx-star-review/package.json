@@ -1,0 +1,42 @@
+{
+  "name": "ngx-star-review",
+  "version": "16.0.0",
+  "peerDependencies": {
+    "@angular/common": "^16.2.0",
+    "@angular/core": "^16.2.0",
+    "@angular/forms": "^16.2.4",
+    "@angular/material": "^16.2.3",
+    "@fortawesome/angular-fontawesome": "^0.13.0",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-regular-svg-icons": "^6.4.2"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techfever-soft/ngx-star-review.git"
+  },
+  "homepage": "https://ngx-star-review.web.app/",
+  "author": {
+    "name": "Théophane VRAUX",
+    "email": "techfever.dev@gmail.com",
+    "url": "https://techfever.dev"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/techfever-soft/ngx-star-review/issues"
+  },
+  "keywords": [
+    "angular",
+    "ngx",
+    "angular 16",
+    "star-rating",
+    "star",
+    "review",
+    "review-rating",
+    "rating",
+    "rating-service"
+  ]
+}

@@ -11,18 +11,25 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.2.0",
+    "@angular/cdk": "^16.2.3",
     "@angular/common": "^16.2.0",
     "@angular/compiler": "^16.2.0",
     "@angular/core": "^16.2.0",
     "@angular/forms": "^16.2.0",
+    "@angular/material": "^16.2.3",
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@fortawesome/angular-fontawesome": "^0.13.0",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-regular-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^16.2.1",
     "@angular/cli": "~16.2.1",
     "@angular/compiler-cli": "^16.2.0",
     "@types/jasmine": "~4.3.0",
@@ -32,6 +39,32 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-packagr": "^16.2.0",
     "typescript": "~5.1.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techfever-soft/ngx-star-review.git"
+  },
+  "homepage": "https://ngx-star-review.web.app/",
+  "author": {
+    "name": "Théophane VRAUX",
+    "email": "techfever.dev@gmail.com",
+    "url": "https://techfever.dev"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/techfever-soft/ngx-star-review/issues"
+  },
+  "keywords": [
+    "angular",
+    "ngx",
+    "angular 16",
+    "star-rating",
+    "star",
+    "review",
+    "review-rating",
+    "rating",
+    "rating-service"
+  ]
 }

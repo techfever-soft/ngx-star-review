@@ -1,0 +1,86 @@
+<mat-card class="mx-auto mt-20">
+  <div class="text-center">
+    <h3 class="mat-h3">Default mode</h3>
+  </div>
+
+  <div class="mt-20 mb-20 mx-auto">
+    <ngx-star-review
+      [starCount]="dynamicStarCount.valueAsNumber"
+      mode="default"
+      [control]="firstReview"
+      [customIcon]="{
+        icon: faStarOutline,
+        selectedIcon: faStarSolid
+      }"
+      [minDisabled]="false"
+      (rating)="changeFirstReview($event)"
+      class="mx-auto"
+    ></ngx-star-review>
+
+    <br />
+
+    <mat-form-field style="width: 100%">
+      <mat-label>Star count</mat-label>
+      <input matInput type="number" #dynamicStarCount value="5" />
+    </mat-form-field>
+  </div>
+</mat-card>
+
+<br />
+
+<mat-card>
+  <div class="text-center">
+    <h3 class="mat-h3">Material icon buttons</h3>
+  </div>
+
+  <div class="mt-20 mb-20 mx-auto">
+    <ngx-star-review
+      [starCount]="dynamicStarCountMat.valueAsNumber"
+      mode="material"
+      [control]="secondReview"
+      (rating)="changeSecondReview($event)"
+      [minDisabled]="false"
+      [customIcon]="{
+        text: 'check',
+        selectedText: 'check_circle'
+      }"
+    ></ngx-star-review>
+
+    <br />
+
+    <mat-form-field style="width: 100%">
+      <mat-label>Star count</mat-label>
+      <input matInput type="number" #dynamicStarCountMat value="5" />
+    </mat-form-field>
+  </div>
+</mat-card>
+
+<br />
+
+<mat-card>
+  <div class="text-center">
+    <h3 class="mat-h3">Material toggle buttons</h3>
+  </div>
+
+  <div class="mt-20 mb-20 mx-auto">
+    <ngx-star-review
+      [starCount]="dynamicStarCountMatToggle.valueAsNumber"
+      [control]="thirdReview"
+      [minDisabled]="false"
+      [customIcon]="{
+        text: 'favorite',
+        selectedText: 'favorite'
+      }"
+      (rating)="changeThirdReview($event)"
+      theme="accent"
+      mode="material-toggle"
+    ></ngx-star-review>
+
+    <br />
+
+    <mat-form-field style="width: 100%">
+      <mat-label>Star count</mat-label>
+      <input matInput type="number" #dynamicStarCountMatToggle value="5" />
+    </mat-form-field>
+  </div>
+</mat-card>
